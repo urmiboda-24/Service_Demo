@@ -1,0 +1,138 @@
+﻿@model Service_Demo.Models.ViewModels.SkillsViewModel
+<table class="table">
+    <thead>
+        <tr style="white-space: nowrap;">
+            <th scope="col">Skill Name</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Skills)
+        {
+            @if (@item.DeletedAt == null)
+            {
+                <tr>
+                    <td>
+                        @item.SkillName
+                    </td>
+                    @if(@item.Status == true)
+                    {
+                        <td style="color: green;">Active</td>
+                    }
+                    else
+                    {
+                        <td style="color: Red;">Inactive</td>
+                    }
+                    <td class="icons">
+                        <i data-bs-toggle="modal" data-bs-target="#popupadmineditskill" onclick="AdminSkillDataEdit('@item.SkillName',@item.Id, '@item.Status')" id="edit-icon" class="bi bi-pencil-square"></i>
+                        <i data-bs-toggle="modal" data-bs-target="#popupadminremoveskill" data-id="@item.Id" id="delete-icon" class="bi bi-trash"></i>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<div class="pagination justify-content-end mt-3" style="gap:7px;">
+    <input type="hidden" id="currentPageNumber" value="@Model.CurrentPage" />
+    <input type="hidden" id="pageCount" value="@Model.PageCount" />
+    @if (Model.PageCount > 1)
+    {
+        @if (Model.CurrentPage > 1)
+        {
+            <button id="prev-btn">&laquo;</button>
+        }
+        @for (int i = 1; i <= Model.PageCount; i++)
+        {
+            string classlbl = "";
+            @if (Model.CurrentPage == i)
+            {
+                classlbl = "pagenumberSelected";
+            }
+            else
+            {
+                classlbl = "page-btn";
+            }
+            <button class="@classlbl" @if(Model.CurrentPage == i){
+    <text>disabled</text>
+}>@i</button>
+        }
+
+        @if (Model.CurrentPage != Model.PageCount)
+        {
+            <button id="next-btn">&raquo;</button>
+        }
+    }
+</div>
+
+<script>
+
+
+        $(function () {
+        var currentPage = @Model.CurrentPage;
+        var pageCount = @Model.PageCount;
+        $(".page-btn").click(function () {
+            var page = $(this).text();
+            var text = $("#skillsearch").val();
+            if (page != currentPage) {
+                $.ajax({
+                    type: 'GET',
+                    url: '/Skills/GetSkillList',
+                    dataType: 'html',
+                    data: {searchText:text,pageNumber:page},
+                    success: function (data) {
+                        $('.skilldatalist').html("");
+                        $('.skilldatalist').html(data);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            }
+        });
+
+        $("#prev-btn").click(function () {
+            var prevPage = currentPage - 1;
+            var text = $("#skillsearch").val();
+            if (prevPage >= 1) {
+                $.ajax({
+                    type: 'GET',
+                    url: '/Skills/GetSkillList',
+                    dataType: 'html',
+                    data: {searchText:text,pageNumber:prevPage},
+                    success: function (data) {
+                        $('.skilldatalist').html("");
+                        $('.skilldatalist').html(data);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            }
+        });
+
+        $("#next-btn").click(function () {
+            var nextPage = currentPage + 1;
+            var text = $("#skillsearch").val();
+            if (nextPage <= pageCount) {
+                $.ajax({
+                    type: 'GET',
+                    url: '/Skills/GetSkillList',
+                    dataType: 'html',
+                    data: {searchText:text,pageNumber:nextPage},
+                    success: function (data) {
+                        $('.skilldatalist').html("");
+                        $('.skilldatalist').html(data);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            }
+        });
+
+    });
+
+
+</script>

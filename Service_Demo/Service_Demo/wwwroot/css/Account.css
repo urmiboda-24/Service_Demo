@@ -1,0 +1,623 @@
+﻿/*<!---Login-->*/
+.slider_des {
+    text-align: left;
+    color: #FFFFFF;
+    width: 592px;
+    height: 109px;
+    top: 643px;
+    left: 159px;
+}
+
+.slider_lorem {
+    top: 776px;
+    left: 159px;
+    height: 120px;
+    text-align: left;
+    color: #FFFFFF;
+}
+
+.slider_img {
+    height: 100vh;
+}
+
+.button_outline {
+    border-color: #F88634;
+}
+
+.form_text_color {
+    color: #414141;
+}
+
+.login_word {
+    color: #F88634;
+    text-align: center;
+}
+
+slider {
+    top: 0px;
+    left: 0px;
+    width: 1344px;
+    height: 983px;
+}
+
+.right-side {
+    margin-top: 319px;
+}
+
+@media screen and (min-width:1200px) {
+    .right-side {
+        margin-top: 319px;
+        margin-left: 20px;
+    }
+}
+
+@media screen and (max-width:1199px) {
+    .right-side {
+        margin-top: 30px;
+        margin-left: 20px;
+    }
+}
+
+.lost_field {
+    width: 130px;
+    height: 19px;
+    text-align: center;
+    color: #414141;
+    font-size: 12px;
+    margin-left: 35%;
+    margin-top: 1%;
+}
+
+.register_field {
+    width: 266px;
+    height: 19px;
+    font-size: 13px;
+}
+
+.register_field_p2 {
+    color: #2B64B1;
+    width: 115px;
+    height: 19px;
+}
+
+.register_field_p1 {
+    color: #414141;
+}
+
+.privacy {
+    color: #414141;
+    width: 113px;
+    height: 19px;
+    font-size: 14px;
+    text-align: left;
+    margin-left: 45%;
+    margin-top: 125px;
+}
+
+/*Skills*/
+.text {
+    margin: auto;
+    width: calc(100px + 5vw);
+    background-color: transparent;
+    color: white;
+    font-size: calc(12px + 0.2vw);
+    padding: 6px 15px;
+    /* border: 2px solid white;
+        border-radius: 30px;*/
+}
+
+
+/*end sidebar */
+
+/*sidebar*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ------------------
+    Sidebar
+--------------------- */
+
+.cms-sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 300px;
+    background: #f88634;
+    z-index: 1;
+}
+
+    .cms-sidebar ul {
+        padding-top: 3vh;
+        list-style-type: none;
+    }
+
+        .cms-sidebar ul li {
+            padding: 10px 15px;
+            cursor: pointer;
+            width: 250px;
+        }
+
+            .cms-sidebar ul li:hover {
+                background: #fff;
+            }
+
+            .cms-sidebar ul li i {
+                font-size: 22px;
+                color: #fff;
+            }
+
+            .cms-sidebar ul li span {
+                padding-left: 8px;
+                font-size: 20px;
+                color: #fff;
+            }
+
+    .cms-sidebar .sidebar-heading {
+        color: #fff;
+        font-size: 15px;
+    }
+
+    .cms-sidebar ul li.active {
+        background-color: #fff;
+    }
+
+#sidebar-open {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#sidebar-close {
+    font-size: 12px;
+    cursor: pointer;
+    margin: 3px 0px 0px 12vh;
+    color: white;
+}
+
+/* -------------------
+     Navbar
+------------------------- */
+.admin-navbar {
+    position: absolute;
+    top: 0;
+    left: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(100vw - 300px);
+    height: 80px;
+    box-shadow: 0 8px 10px -10px #adadad;
+}
+
+.admin-nav-left {
+    margin-left: 20px;
+}
+
+.admin-nav-right {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-right: 98px;
+}
+
+    .admin-nav-right img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+    }
+/* =========================
+Media Queries for Navbar
+============================== */
+@media only screen and (max-width: 960px) {
+    .admin-navbar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .admin-nav-right img {
+        display: none;
+    }
+
+    .admin-nav-left span {
+        font-size: 14px;
+    }
+}
+/* --------------------
+    Main Content
+------------------------ */
+.cms-content {
+    position: absolute;
+    top: 10vh;
+    left: 320px;
+    z-index: 0;
+}
+
+    .cms-content .heading {
+        margin-top: 4vh;
+        width: calc(98vw - 320px);
+        padding-bottom: 4px;
+        border-bottom: 1px solid #adadad;
+    }
+
+        .cms-content .heading span {
+            font-size: 1.5rem;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #000;
+        }
+
+    .cms-content .add i {
+        color: #f88634;
+        font-size: 20px;
+    }
+
+    .cms-content .add button {
+        padding: 3px 15px;
+        border-radius: 23px;
+        background: #fff;
+        border: 2px solid #f88634;
+        color: #f88634;
+    }
+
+    .cms-content .content-line {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 3vh;
+    }
+
+    .cms-content .search input {
+        border: none;
+        border-color: transparent;
+        outline: none;
+        padding: 8px 12px;
+        width: 200px;
+    }
+
+    .cms-content .search img {
+        height: 15px;
+        width: 15px;
+    }
+
+    .cms-content .search {
+        display: flex;
+        align-items: center;
+        border: 2px solid #adadad;
+        border-radius: 5px;
+        padding-left: 10px;
+        width: 250px;
+    }
+/* =============================
+Media Queries for Search & Add
+================================ */
+@media only screen and (max-width: 960px) {
+    .cms-content {
+        position: absolute;
+        left: 0px;
+        width: 100vw;
+        padding: 5px 15px;
+    }
+
+        .cms-content .heading {
+            width: 97vw;
+        }
+}
+
+@media only screen and (max-width: 400px) {
+    .cms-content .search {
+        width: 200px;
+    }
+
+        .cms-content .search input {
+            width: 170px;
+        }
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#edit-icon {
+    color: #f88634;
+}
+
+table .actives {
+    color: #14c506;
+}
+
+table th {
+    font-weight: 400;
+    font-size: 20px;
+}
+
+table thead {
+    background: #f8f9fc;
+}
+
+table {
+    border: 1px solid #adadad;
+    margin-top: 3vh;
+}
+
+.desc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*display: -webkit-box;*/
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+
+/* -------------------
+    CMS Add
+------------------------ */
+.cms-content .cms-add {
+    margin-top: 3vh;
+    width: calc(95vw - 300px);
+    border: 2px solid #00000014;
+    padding-bottom: 3vh;
+}
+
+.cms-content .mission-add {
+    margin-top: 3vh;
+    width: calc(95vw - 300px);
+    height: 73vh;
+    border: 2px solid #00000014;
+    max-height: 73vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 7px 0px;
+}
+
+.cms-add .title {
+    font-size: 22px;
+    padding: 15px 30px;
+    height: 60px;
+    background: #f8f9fc;
+    width: calc(95vw - 303px);
+    border-bottom: 2px solid #00000014;
+}
+
+/*.cms-content form {
+    padding: 15px 30px;
+}*/
+
+/*.cms-add .layer-2, .cms-add label {
+    margin-top: 2vh;
+    margin-left: 2vw;
+}*/
+
+.ck-editor__editable {
+    height: 30vh;
+}
+
+/*.cms-content form input, .cmsdropdown, .cms-content form textarea {
+    width: 95%;
+    margin-left: 2vw;
+}*/
+
+.form-buttons {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: end;
+    margin-top: 2vh;
+}
+
+    .form-buttons button {
+        padding: 8px 15px;
+        border-radius: 23px;
+    }
+
+#saveBtn {
+    background: #fff;
+    border: 2px solid #f88634;
+    color: #f88634;
+}
+
+#cancelBtn {
+    background: #fff;
+    border: 2px solid #adadad;
+    color: #adadad;
+}
+/* =====================
+Media Queries for CMS Add
+======================== */
+
+
+@media only screen and (max-width: 960px) {
+    .cms-content .cms-add {
+        width: 90vw;
+    }
+
+    .cms-content .mission-add {
+        width: 79vw;
+    }
+
+    .cms-add .title {
+        width: 89.5vw;
+    }
+
+    .addpage-form {
+        padding: 5px 10px !important;
+    }
+}
+
+
+.table > :not(caption) > * > * {
+    padding: 0.5rem 0.5rem;
+    background-color: var(--bs-table-bg);
+    border-bottom-width: 0 !important;
+    box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+}
+
+table tr {
+    border-bottom: 1px solid #00000014;
+}
+
+#tblOverflow::-webkit-scrollbar {
+    display: none;
+}
+
+.table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/*pagination */
+.page-btn, #prev-btn, #next-btn {
+    border: 1px solid #f88634;
+    color: #f88634;
+    padding: 1px 6px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.pagenumberSelected {
+    border: 1px solid #f88634;
+    color: white;
+    padding: 1px 6px;
+    background-color: #f88634;
+    border-radius: 5px;
+}
+/* banner add page*/
+.bannerimgadmin {
+    width: 100px;
+    height: 65px;
+}
+
+#imagePreview img {
+    width: 25%;
+    margin: 1% 5%;
+}
+/*mission add page*/
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: fit-content;
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+}
+
+.available-skills,
+.selected-skills {
+    flex-basis: 50%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+    .available-skills h3,
+    .selected-skills h3 {
+        font-size: 20px;
+        margin-top: 0;
+    }
+
+.skill-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .skill-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+        .skill-list li:hover {
+            background-color: #f4f4f4;
+        }
+
+.add-skill {
+    background: white;
+    border: none;
+}
+
+.remove-skill {
+    background: white;
+    border: none;
+}
+
+.selected-skills li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+    .selected-skills li:hover {
+        background-color: #f4f4f4;
+    }
+
+.skill-list li.selected {
+    background-color: #ccc;
+}
+
+.add-content {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 90vh;
+}
+
+    .add-content::-webkit-scrollbar {
+        width: 0;
+    }
+
+.popup-top-close-btn {
+    border: 2px solid white;
+    background-color: white;
+}
+
+/*comman*/
+.brd3 {
+    padding: 5px 20px;
+    border-radius: 24px;
+    border: 2px solid gray;
+    color: gray;
+    background-color: #fff;
+}
+
+.brd1 {
+    height: 35px;
+    border: solid 1px #d9d9d9;
+    border-radius: 3px;
+    width: 100%;
+    color: gray;
+    padding: 10px;
+    font-size: 13px;
+}
+
+.brd4, .saveBtncu {
+    padding: 5px 20px;
+    border-radius: 24px;
+    border: 2px solid #f88634;
+    color: #f88634;
+    background-color: #fff;
+}

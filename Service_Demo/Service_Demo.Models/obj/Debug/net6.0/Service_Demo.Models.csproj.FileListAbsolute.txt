@@ -1,0 +1,17 @@
+D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Models\bin\Debug\net6.0\Service_Demo.Models.deps.json
+D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Models\bin\Debug\net6.0\Service_Demo.Models.runtimeconfig.json
+D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Models\bin\Debug\net6.0\Service_Demo.Models.dll
+D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Models\bin\Debug\net6.0\ref\Service_Demo.Models.dll
+D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Models\bin\Debug\net6.0\Service_Demo.Models.pdb
+D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Models\bin\Debug\net6.0\Service_Demo.Entites.dll
+D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Models\bin\Debug\net6.0\Service_Demo.Entites.pdb
+D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Models\obj\Debug\net6.0\Service_Demo.Models.csproj.AssemblyReference.cache
+D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Models\obj\Debug\net6.0\Service_Demo.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Models\obj\Debug\net6.0\Service_Demo.Models.AssemblyInfoInputs.cache
+D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Models\obj\Debug\net6.0\Service_Demo.Models.AssemblyInfo.cs
+D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Models\obj\Debug\net6.0\Service_Demo.Models.csproj.CoreCompileInputs.cache
+D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Models\obj\Debug\net6.0\Service_Demo.Models.csproj.CopyComplete
+D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Models\obj\Debug\net6.0\Service_Demo.Models.dll
+D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Models\obj\Debug\net6.0\ref\Service_Demo.Models.dll
+D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Models\obj\Debug\net6.0\Service_Demo.Models.pdb
+D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Models\obj\Debug\net6.0\Service_Demo.Models.genruntimeconfig.cache

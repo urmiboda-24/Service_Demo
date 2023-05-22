@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "84c4da6c-cb6c-4555-9a1a-01d6c08d6470": {
+      "ProjectGuid": "84c4da6c-cb6c-4555-9a1a-01d6c08d6470",
+      "DisplayName": "Service_Demo",
+      "ColorIndex": 0
+    },
+    "3b4b56e2-a8f9-42f4-b815-a42579c5ea74": {
+      "ProjectGuid": "3b4b56e2-a8f9-42f4-b815-a42579c5ea74",
+      "DisplayName": "Service_Demo.Entites",
+      "ColorIndex": 1
+    },
+    "ee0eb7e2-2a77-4175-a439-8a747b9ef62c": {
+      "ProjectGuid": "ee0eb7e2-2a77-4175-a439-8a747b9ef62c",
+      "DisplayName": "Service_Demo.Repository",
+      "ColorIndex": 2
+    },
+    "d92547de-ec80-4b3b-8821-115a25f1b4f0": {
+      "ProjectGuid": "d92547de-ec80-4b3b-8821-115a25f1b4f0",
+      "DisplayName": "Service_Demo.Services",
+      "ColorIndex": 3
+    },
+    "cec39f52-c7ee-43ef-8a7f-92b217d1eec0": {
+      "ProjectGuid": "cec39f52-c7ee-43ef-8a7f-92b217d1eec0",
+      "DisplayName": "Service_Demo.Models",
+      "ColorIndex": 4
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 5
+}

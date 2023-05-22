@@ -1,0 +1,259 @@
+﻿@*<partial name="AdminSlidebar" />*@
+@model Service_Demo.Models.ViewModels.SkillsViewModel
+@inject IHttpContextAccessor Accesor
+<!-- Navbar -->
+<header>
+    <nav class="admin-navbar">
+        <div class="admin-nav-left">
+            <i id="sidebar-open" class="bi bi-list"></i>
+            <span>@DateTime.Now.ToString("dddd, MMMM dd, yyyy, h:mm tt")</span>
+        </div>
+        <div class="admin-nav-right">
+            <img src="@Accesor?.HttpContext?.Session.GetString("Avatar")" alt="" />
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                      @Accesor?.HttpContext?.Session.GetString("Name")
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!-- Sidebar -->
+<div class="cms-sidebar">
+    <ul>
+        <li>
+        <div class="d-flex">
+             <span class="sidebar-heading d-flex justify-content-between">NAVIGATION</span>
+             <i id="sidebar-close" class="bi bi-x-lg"></i>
+        </div>
+        </li>
+
+        <a asp-action="SkillList" asp-controller="Skills" style="text-decoration:none;"><li><i class="bi bi-tools"></i><span>Mission Skills</span></li></a>
+    </ul>
+</div>
+
+  
+            <!-- Add Model -->
+            <div class="modal" id="popupadminaddskill" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header" style="border-bottom:0 ;">
+                            <h5 class="modal-title" id="exampleModalLabel">Skill</h5>
+                            <button type="button" style="border:0;" class="close popup-top-close-btn" data-bs-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form asp-action="SkillList" method="post" asp-controller="Skills">
+                        <div class="modal-body">
+                            <p class="mb-1">Skill Name</p>
+                            <input asp-for="SkillsName" class="brd1"  type="text">
+                            <span asp-validation-for="SkillsName" class="text-danger"></span>
+                             <p class="mb-1 mt-3">Status</p>
+                            <select asp-for="Status" class="form-select cmsdropdown" aria-label="Default select example" >
+                                <option value="True">Active</option>
+                                <option value="False">Inactive</option>
+                            </select>
+                             <span asp-validation-for="Status" class="text-danger"></span>
+                        </div>
+
+                        <div class="modal-footer" style="border-top:0 ;">
+                            <button type="button" class="brd3" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" id="add-skill-admin-savebtn" class="saveBtncu">Save</button>
+                        </div>
+                         </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+             <!-- Edit Model -->
+            <div class="modal" id="popupadmineditskill" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header" style="border-bottom:0 ;">
+                            <h5 class="modal-title" id="exampleModalLabel">Skill</h5>
+                            <button type="button" style="border:0;" class="close popup-top-close-btn" data-bs-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form asp-action="SkillList" method="post" asp-controller="Skills">
+                        <div class="modal-body">
+                            <input type="hidden" asp-for="SkillId" id="admin-skill-id" />
+                            <p class="mb-1">Skill Name</p>
+                            <input asp-for="SkillsName" class="brd1" id="admin-add-skill" type="text">
+                            <span asp-validation-for="SkillsName" class="text-danger"></span>
+                             <p class="mb-1 mt-3">Status</p>
+                            <select asp-for="Status" class="form-select cmsdropdown" aria-label="Default select example" id="admin-add-skill-status">
+                                <option value="True">Active</option>
+                                <option value="False">Inactive</option>
+                            </select>
+                             <span asp-validation-for="Status" class="text-danger"></span>
+                        </div>
+
+                        <div class="modal-footer" style="border-top:0 ;">
+                            <button type="button" class="brd3" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" id="add-skill-admin-savebtn" class="saveBtncu">Save</button>
+                        </div>
+                         </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <!-- Remove Modal -->
+                <div class="modal fade" id="popupadminremoveskill" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+                        <button type="button" class="btn-close popup-top-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                       Are you sure you want to delete this item?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="brd3" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="skilldeletebtn" class="brd4">Delete</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <!-- Modal -->
+<div class="cms-content">
+    <p class="heading"><span>Mission Skill Page</span></p>
+    <div class="content-line">
+        <div class="search">
+            <img src="~/Image/search.png" alt="" />
+            <input id="skillsearch" type="text" placeholder="Search" />
+        </div>
+        <div class="add">
+            <button data-bs-toggle="modal" data-bs-target="#popupadminaddskill" id="addbtn" type="submit"><i class="bi bi-plus"></i> Add</button>
+        </div>
+    </div>
+    <div id="tblOverflow" class="skilldatalist" style="overflow-x: scroll;">
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        GetAdminSkills();
+        if ($(window).width() < 960) {
+            $("#sidebar-close").show();
+        } 
+         
+          $('#popupadminremoveskill').on('show.bs.modal', function(e) {
+                var skillId = $(e.relatedTarget).data('id');
+                $('#skilldeletebtn').attr('data-id', skillId);
+          });
+             $('#skilldeletebtn').on('click', function(e) {
+                 var SkillId = $(this).attr('data-id')
+                 RemoveSkills(SkillId);
+          });
+        //ajax call for skill search 
+        $("#skillsearch").on("keyup", function () {
+            var searchText = $(this).val();
+            $.ajax({
+                url: '/Skills/GetSkillList',
+                type: 'GET',
+                dataType: 'Html',
+                data: { searchText: searchText },
+                success: function (data) {
+                    $('.skilldatalist').html("");
+                    $('.skilldatalist').html(data);
+                },
+                error: function () {
+                    alert('error in fav mission');
+                },
+            });
+        });
+       
+    });
+    function RemoveSkills(SkillId){
+       $.ajax({
+            url: '/Skills/RemoveSkill',
+            type: 'GET',
+            data:{skillId:SkillId},
+            success: function () {
+                 GetAdminSkills();
+            },
+            error: function () {
+                alert('error in skill remove admin');
+            },
+        });
+    }
+    function GetAdminSkills() {
+        $.ajax({
+            url: '/Skills/GetSkillList',
+            type: 'GET',
+            dataType: 'Html',
+            success: function (data) {
+                $('.skilldatalist').html("");
+                $('.skilldatalist').html(data);
+            },
+            error: function () {
+                alert('error in fav mission');
+            },
+        });
+    }
+    function AdminSkillDataEdit(skillName, Id, skillStatus){
+        $('#admin-add-skill').val(skillName);
+        $('#admin-add-skill-status').val(skillStatus);
+        $('#admin-skill-id').val(Id);
+    }
+    function closeSidebar() {
+        document.getElementById('sidebar-close').click();
+    }
+
+    // Color Change - Sidebar
+    $(".cms-sidebar ul li").on("mouseenter", function () {
+        $(this).find("i").css("color", "#F88634");
+        $(this).find("span").css("color", "#F88634");
+    });
+    $(".cms-sidebar ul li").on("mouseleave", function () {
+        if (!$(this).hasClass("active")) {
+            $(this).find("i").css("color", "#fff");
+            $(this).find("span").css("color", "#fff");
+        }
+    });
+    $(".cms-sidebar ul li").on("click", function () {
+        $(".cms-sidebar ul li").removeClass("active");
+        $(".cms-sidebar ul li i").css("color", "#fff");
+        $(".cms-sidebar ul li span").css("color", "#fff");
+        $(this).addClass("active");
+        $(this).find("i").css("color", "#F88634");
+        $(this).find("span").css("color", "#F88634");
+    });
+
+    // Hide & Show Sidebar
+    $("#sidebar-open").hide();
+    $("#sidebar-close").hide();
+
+    $(window).resize(function () {
+        if ($(window).width() < 960) {
+            $(".cms-sidebar").hide();
+            $("#sidebar-open").show();
+            $("#sidebar-close").hide();
+        } 
+        else {
+            $(".cms-sidebar").show();
+            $("#sidebar-open").hide();
+        }
+    });
+
+    // Open & Close Button - Sidebar
+    $("#sidebar-open").on("click", function (e) {
+        
+        $(".cms-sidebar").show();
+        $("#sidebar-open").hide();
+        $("#sidebar-close").show();
+    });
+
+    $("#sidebar-close").on("click", function (e) {
+        $(".cms-sidebar").hide();
+        $("#sidebar-close").hide();
+        $("#sidebar-open").show();
+    });
+ 
+</script>
