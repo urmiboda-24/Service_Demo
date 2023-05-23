@@ -48,8 +48,8 @@
                         <form asp-action="SkillList" method="post" asp-controller="Skills">
                         <div class="modal-body">
                             <p class="mb-1">Skill Name</p>
-                            <input asp-for="SkillsName" class="brd1"  type="text">
-                            <span asp-validation-for="SkillsName" class="text-danger"></span>
+                            <input asp-for="SkillName" class="brd1"  type="text">
+                            <span asp-validation-for="SkillName" class="text-danger"></span>
                              <p class="mb-1 mt-3">Status</p>
                             <select asp-for="Status" class="form-select cmsdropdown" aria-label="Default select example" >
                                 <option value="True">Active</option>
@@ -83,8 +83,8 @@
                         <div class="modal-body">
                             <input type="hidden" asp-for="SkillId" id="admin-skill-id" />
                             <p class="mb-1">Skill Name</p>
-                            <input asp-for="SkillsName" class="brd1" id="admin-add-skill" type="text">
-                            <span asp-validation-for="SkillsName" class="text-danger"></span>
+                            <input asp-for="SkillName" class="brd1" id="admin-add-skill" type="text">
+                            <span asp-validation-for="SkillName" class="text-danger"></span>
                              <p class="mb-1 mt-3">Status</p>
                             <select asp-for="Status" class="form-select cmsdropdown" aria-label="Default select example" id="admin-add-skill-status">
                                 <option value="True">Active</option>

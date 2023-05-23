@@ -29,6 +29,10 @@ namespace Service_Demo.Services.Service
         {
             _genericRepository.Save();
         }
+        public T GetFirstOrDefaultData(Expression<Func<T, bool>> condition)
+        {
+            return _genericRepository.GetFirstOrDefaultData(condition);
+        }
     }
 
 }

@@ -1,8 +1,10 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Service_Demo.Auth;
 using Service_Demo.Entites;
 using Service_Demo.Entites.Auth;
+using Service_Demo.Entites.Models;
 using Service_Demo.Models.ViewModels;
 using Service_Demo.Services.Interface;
 
@@ -14,11 +16,13 @@ namespace Service_Demo.Controllers
         private readonly IAccountService _accountService;
         private readonly INotyfService _toastNotification;
         private readonly IConfiguration _configuration;
-        public AccountController(IAccountService accountService, INotyfService toastNotification, IConfiguration configuration)
+        private readonly IGenericService<User> _genericService;
+        public AccountController(IAccountService accountService, INotyfService toastNotification, IConfiguration configuration, IGenericService<User> genericService)
         {
             _accountService = accountService;
             _toastNotification = toastNotification;
             _configuration = configuration;
+            _genericService = genericService;
         }
         public IActionResult Login()
         {
@@ -37,12 +41,18 @@ namespace Service_Demo.Controllers
                     {
                         if (passwordValid != null)
                         {
-                            SessionDetailsViewModel sessionDetailsViewModel = new SessionDetailsViewModel();
+                            var user = _genericService.GetFirstOrDefaultData(user => user.Email == model.Email);
+                            var config = new MapperConfiguration(x => x.CreateMap<User, SessionDetailsViewModel>().ForMember(dest => dest.FullName, opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName}")));
+
+                            var mapper = new Mapper(config);
+                            var sessionDetailsViewModel = mapper.Map<User, SessionDetailsViewModel>(user);
+
+                            /*SessionDetailsViewModel sessionDetailsViewModel = new SessionDetailsViewModel();
                             sessionDetailsViewModel.Email = passwordValid.Email;
                             sessionDetailsViewModel.Avatar = passwordValid.Avatar;
                             sessionDetailsViewModel.UserId = passwordValid.Id;
                             sessionDetailsViewModel.FullName = passwordValid.FirstName + " " + passwordValid.LastName;
-                            sessionDetailsViewModel.Role = passwordValid.Role;
+                            sessionDetailsViewModel.Role = passwordValid.Role;*/
 
                             var jwtSetting = _configuration.GetSection(nameof(JwtSetting)).Get<JwtSetting>();
 

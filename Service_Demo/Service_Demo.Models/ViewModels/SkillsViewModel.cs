@@ -11,7 +11,7 @@ namespace Service_Demo.Models.ViewModels
     {
         public List<Skills> Skills { get; set; }
         [Required]
-        public string SkillsName { get; set; }
+        public string SkillName { get; set; }
         [Required]
         public bool? Status { get; set; }
         public long SkillId { get; set; }

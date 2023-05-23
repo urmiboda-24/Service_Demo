@@ -14,7 +14,7 @@ namespace Service_Demo.Services.Interface
         public SkillsViewModel GetSkills(string searchText, int pageNumber);
       /*  public void AddSkill(Skills model);*/
         public void RemoveSkill(long skillId);
-        public bool AddEditSkill(SkillsViewModel model);
+        public void AddEditSkill(SkillsViewModel model);
         public bool FindSkillName(SkillsViewModel model);
     }
 }

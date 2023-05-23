@@ -1,4 +1,5 @@
-﻿using Service_Demo.Entites.Models;
+﻿using AutoMapper;
+using Service_Demo.Entites.Models;
 using Service_Demo.Models.ViewModels;
 using Service_Demo.Repository.Interface;
 using Service_Demo.Services.Interface;
@@ -13,11 +14,13 @@ namespace Service_Demo.Services.Service
     public class SkillService :GenericService<Skills>, ISkillService
     {
         private readonly ISkillRepository _skillRepository;
+        private readonly IMapper _mapper;
 
 
-        public SkillService(ISkillRepository skillRepository) : base(skillRepository)
+        public SkillService(ISkillRepository skillRepository, IMapper mapper) : base(skillRepository)
         {
             _skillRepository = skillRepository;
+            _mapper = mapper;
         }
         public SkillsViewModel GetSkills(string searchText, int pageNumber)
         {
@@ -56,30 +59,26 @@ namespace Service_Demo.Services.Service
         }
         public bool FindSkillName(SkillsViewModel model)
         {
-            return _skillRepository.AnyData(skill => skill.SkillName == model.SkillsName);
+            return _skillRepository.AnyData(skill => skill.SkillName == model.SkillName);
         }
-        public bool AddEditSkill(SkillsViewModel model)
+        public void AddEditSkill(SkillsViewModel model)
         {
-            var skill = _skillRepository.GetFirstOrDefaultData(skill => skill.Id == model.SkillId);
-            if(model.SkillId == 0 && skill == null)
+            var config = new MapperConfiguration(x => x.CreateMap<SkillsViewModel, Skills>());
+            var mapper = new Mapper(config);
+
+
+            if (model.SkillId == 0)
             {
-                Skills skills = new Skills();
-                skills.Status = (bool)model.Status;
-                skills.SkillName = model.SkillsName;
-                _skillRepository.Add(skills);
-                _skillRepository.Save();
-                return true;
+                var addSkillMapper = mapper.Map<SkillsViewModel, Skills>(model);
+                _skillRepository.Add(addSkillMapper);
             }
             else
             {
-                skill.UpdatedAt = DateTime.Now;
-                skill.SkillName = model.SkillsName;
-                skill.Status = (bool)model.Status;
-                _skillRepository.Edit(skill);
-                _skillRepository.Save();
-                return false;
+                var skill = _skillRepository.GetFirstOrDefaultData(skill => skill.Id == model.SkillId);
+                Skills updatedSkillMapper = mapper.Map(model, skill);
+                _skillRepository.Edit(updatedSkillMapper);
             }
-           
+            _skillRepository.Save();
         }
     }
 }

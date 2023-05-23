@@ -29,8 +29,8 @@ namespace Service_Demo.Controllers
             }
             else
             {
-                bool skillAddOrEdit = _skillService.AddEditSkill(model);
-                if (skillAddOrEdit == true)
+                _skillService.AddEditSkill(model);
+                if (model.SkillId == 0)
                 {
                     _toastNotification.Success("SKill add successfully", 5);
                 }
