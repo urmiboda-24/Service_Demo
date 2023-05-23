@@ -25,18 +25,18 @@ namespace Service_Demo.Controllers
             bool skillAvailable = _skillService.FindSkillName(model);
             if(skillAvailable == true && model.SkillId == 0)
             {
-                _toastNotification.Error("Skill exit", 5);
+                _toastNotification.Error("Skill already exit", 5);
             }
             else
             {
                 _skillService.AddEditSkill(model);
                 if (model.SkillId == 0)
                 {
-                    _toastNotification.Success("SKill add successfully", 5);
+                    _toastNotification.Success("Skill add successfully", 5);
                 }
                 else
                 {
-                    _toastNotification.Success("SKill edit successfully", 5);
+                    _toastNotification.Success("Skill edit successfully", 5);
                 }
             }
             return View();
@@ -49,6 +49,7 @@ namespace Service_Demo.Controllers
         public IActionResult RemoveSkill(long skillId)
         {
             _skillService.RemoveSkill(skillId);
+            _toastNotification.Success("Skill delete successfully", 5);
             return Ok();
         }
     }

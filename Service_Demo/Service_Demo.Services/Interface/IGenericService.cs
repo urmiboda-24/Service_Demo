@@ -12,6 +12,6 @@ namespace Service_Demo.Services.Interface
        public void Create(T entity);
        public void Save();
        public void Remove(T entity);
-        public T GetFirstOrDefaultData(Expression<Func<T, bool>> condition);
+       public T GetFirstOrDefaultData(Expression<Func<T, bool>> condition);
     }
 }

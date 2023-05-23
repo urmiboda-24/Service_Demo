@@ -28,11 +28,11 @@ namespace Service_Demo.Services.Service
             {
                 pageNumber = 1;
             }
-            int pagesize = 1;
-            var skills = _skillRepository.QueryableData(skill => skill.DeletedAt == null);
+            int pagesize = 3;
+            var skills = _skillRepository.QueryableData(skill => skill.DeletedAt == null).OrderBy(skill => skill.SkillName); 
             if (searchText != null)
             {
-                skills = _skillRepository.QueryableData(skill => skill.SkillName.ToLower().Contains(searchText.ToLower()) && skill.DeletedAt == null);
+                skills = _skillRepository.QueryableData(skill => skill.SkillName.ToLower().Contains(searchText.ToLower()) && skill.DeletedAt == null).OrderBy(skill => skill.SkillName);
             }
             int pagecount = (int)Math.Ceiling((double)skills.Count() / pagesize);
             var skills1 = skills.Skip((pageNumber - 1) * pagesize).Take(pagesize);
@@ -45,11 +45,6 @@ namespace Service_Demo.Services.Service
 
             return skillsViewModel;
         }
-        /*public void AddSkill(Skills model)
-        {
-            _skillRepository.Add(model);
-            _skillRepository.Save();
-        }*/
         public void RemoveSkill(long skillId)
         {
             var skill = _skillRepository.GetFirstOrDefaultData(skill => skill.Id == skillId);

@@ -10,7 +10,6 @@ namespace Service_Demo.Services.Interface
 {
     public interface IAccountService
     {
-        public bool EmailAvailable(string email);
-        public User PasswordAvailable(LoginViewModel model);
+        public User UserAvailable(LoginViewModel model);
     }
 }

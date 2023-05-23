@@ -20,11 +20,7 @@ namespace Service_Demo.Services.Service
         {
             _accountRepository = accountRepository;
         }
-        public bool EmailAvailable(string email)
-        {
-            return _accountRepository.AnyData(user => user.Email == email);
-        }
-        public User PasswordAvailable(LoginViewModel model)
+        public User UserAvailable(LoginViewModel model)
         {
             return _accountRepository.GetFirstOrDefaultData(user => user.Email == model.Email && user.Password == model.Password);
         }

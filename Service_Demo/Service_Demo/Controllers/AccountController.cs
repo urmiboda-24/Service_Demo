@@ -33,13 +33,9 @@ namespace Service_Demo.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                bool emailValid = _accountService.EmailAvailable(model.Email);
-                if (emailValid)
-                {
-                    var passwordValid = _accountService.PasswordAvailable(model);
+                    var userdValid = _accountService.UserAvailable(model);
                     {
-                        if (passwordValid != null)
+                        if (userdValid != null)
                         {
                             var user = _genericService.GetFirstOrDefaultData(user => user.Email == model.Email);
                             var config = new MapperConfiguration(x => x.CreateMap<User, SessionDetailsViewModel>().ForMember(dest => dest.FullName, opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName}")));
@@ -47,30 +43,22 @@ namespace Service_Demo.Controllers
                             var mapper = new Mapper(config);
                             var sessionDetailsViewModel = mapper.Map<User, SessionDetailsViewModel>(user);
 
-                            /*SessionDetailsViewModel sessionDetailsViewModel = new SessionDetailsViewModel();
-                            sessionDetailsViewModel.Email = passwordValid.Email;
-                            sessionDetailsViewModel.Avatar = passwordValid.Avatar;
-                            sessionDetailsViewModel.UserId = passwordValid.Id;
-                            sessionDetailsViewModel.FullName = passwordValid.FirstName + " " + passwordValid.LastName;
-                            sessionDetailsViewModel.Role = passwordValid.Role;*/
-
                             var jwtSetting = _configuration.GetSection(nameof(JwtSetting)).Get<JwtSetting>();
 
                             var token = JwtTokenHelper.GenerateToken(jwtSetting, sessionDetailsViewModel);
 
                             if (string.IsNullOrWhiteSpace(token))
                             {
-                                ModelState.AddModelError("email", "Enter correct email");
                                 _toastNotification.Error("User not exits", 5);
-                                return View("Login");
                             }
-                            HttpContext.Session.SetString("UserID", (passwordValid.Id).ToString());
-                            HttpContext.Session.SetString("Email", passwordValid.Email);
+                            HttpContext.Session.SetString("UserID", (userdValid.Id).ToString());
+                            HttpContext.Session.SetString("Email", userdValid.Email);
                             HttpContext.Session.SetString("Token", token);
-                            HttpContext.Session.SetString("Avatar", passwordValid.Avatar);
-                            HttpContext.Session.SetString("Name", passwordValid.FirstName + " " + passwordValid.LastName);
+                            HttpContext.Session.SetString("Avatar", userdValid.Avatar);
+                            HttpContext.Session.SetString("Role", userdValid.Role);
+                            HttpContext.Session.SetString("Name", userdValid.FirstName + " " + userdValid.LastName);
 
-                            if(passwordValid.Role.ToLower() =="admin")
+                            if(userdValid.Role.ToLower() =="admin")
                             {
                                 _toastNotification.Success("Admin Login successfully");
                                 return RedirectToAction("SkillList", "Skills");
@@ -78,7 +66,7 @@ namespace Service_Demo.Controllers
                             else
                             {
                                 _toastNotification.Success("User Login successfully");
-                                return RedirectToAction("Index", "Home");
+                                return RedirectToAction("SkillList", "Skills");
                             }
                            
                         }
@@ -88,13 +76,16 @@ namespace Service_Demo.Controllers
                             _toastNotification.Error("Wrong password", 5);
                         }
                     }
-                }
-                else
-                {
-                    _toastNotification.Error("User not exits", 5);
-                }
             }
             return View();
+        }
+        public IActionResult Logout()
+        {
+            if (!string.IsNullOrEmpty(HttpContext.Session.GetString("Email")))
+            {
+                HttpContext.Session.Clear();
+            }
+            return RedirectToAction("Login", "Account");
         }
     }
 }

@@ -1,13 +1,27 @@
 ﻿@model Service_Demo.Models.ViewModels.SkillsViewModel
+@inject IHttpContextAccessor Accesor
+
+@if(@Model.Skills.Count == 0){
+    <span><h3 class="text-danger text-center mt-5">Record Not Found</h3></span>
+}
+else{
+    
 <table class="table">
+    @{
+        var role = @Accesor?.HttpContext?.Session.GetString("Role");
+    }
     <thead>
         <tr style="white-space: nowrap;">
             <th scope="col">Skill Name</th>
             <th scope="col">Status</th>
-            <th scope="col">Action</th>
+             @if (@role == "Admin")
+             {
+                 <th scope="col">Action</th>
+             }
         </tr>
     </thead>
     <tbody>
+            
         @foreach (var item in Model.Skills)
         {
             @if (@item.DeletedAt == null)
@@ -24,16 +38,19 @@
                     {
                         <td style="color: Red;">Inactive</td>
                     }
-                    <td class="icons">
-                        <i data-bs-toggle="modal" data-bs-target="#popupadmineditskill" onclick="AdminSkillDataEdit('@item.SkillName',@item.Id, '@item.Status')" id="edit-icon" class="bi bi-pencil-square"></i>
+                        @if (@role == "Admin")
+                        {
+                            <td class="icons">
+                                <i data-bs-toggle="modal" data-bs-target="#popupadmineditskill" onclick="AdminSkillDataEdit('@item.SkillName',@item.Id, '@item.Status')" id="edit-icon" class="bi bi-pencil-square"></i>
                         <i data-bs-toggle="modal" data-bs-target="#popupadminremoveskill" data-id="@item.Id" id="delete-icon" class="bi bi-trash"></i>
                     </td>
+                    }
                 </tr>
             }
         }
     </tbody>
 </table>
-
+}
 <div class="pagination justify-content-end mt-3" style="gap:7px;">
     <input type="hidden" id="currentPageNumber" value="@Model.CurrentPage" />
     <input type="hidden" id="pageCount" value="@Model.PageCount" />
