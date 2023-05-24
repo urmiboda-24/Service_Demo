@@ -33,6 +33,10 @@ namespace Service_Demo.Services.Service
         {
             return _genericRepository.GetFirstOrDefaultData(condition);
         }
+        public bool AnyData(Expression<Func<T, bool>> condition)
+        {
+            return _genericRepository.AnyData(condition);
+        }
     }
 
 }

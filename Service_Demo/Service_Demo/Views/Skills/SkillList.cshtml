@@ -95,7 +95,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Modal -->
+            <!--End Add Modal -->
              <!-- Edit Model -->
             <div class="modal" id="popupadmineditskill" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -130,7 +130,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Modal -->
+            <!--End Edit Modal -->
             <!-- Remove Modal -->
                 <div class="modal fade" id="popupadminremoveskill" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
@@ -149,13 +149,20 @@
                     </div>
                   </div>
                 </div>
-            <!-- Modal -->
+            <!--End Remove Modal -->
 <div class="cms-content">
     <p class="heading"><span>Mission Skill Page</span></p>
     <div class="content-line">
         <div class="search">
             <img src="~/Image/search.png" alt="" />
             <input id="skillsearch" type="text" placeholder="Search" />
+        </div>
+        <div class="search">
+                <select class="form-select" aria-label="Default select example" id="admin-add-skill-sortby" style="border:none;">
+                    <option value="True">Sort By</option>
+                    <option value="SkillName">Alphabetic</option>
+                    <option value="Status">Status</option>
+                </select>
         </div>
         @if(@role == "Admin")
         {
@@ -183,22 +190,15 @@
                  var SkillId = $(this).attr('data-id')
                  RemoveSkills(SkillId);
           });
+
         //ajax call for skill search 
         $("#skillsearch").on("keyup", function () {
-            var searchText = $(this).val();
-            $.ajax({
-                url: '/Skills/GetSkillList',
-                type: 'GET',
-                dataType: 'Html',
-                data: { searchText: searchText },
-                success: function (data) {
-                    $('.skilldatalist').html("");
-                    $('.skilldatalist').html(data);
-                },
-                error: function () {
-                    alert('error in fav mission');
-                },
-            });
+            GetAdminSkills();
+        });
+
+        //ajax call for sort skill 
+        $("#admin-add-skill-sortby").on("change", function () {
+            GetAdminSkills();
         });
        
     });
@@ -216,10 +216,13 @@
             },
         });
     }
-    function GetAdminSkills() {
+    function GetAdminSkills(pageNumber) {
+        var searchText = $("#skillsearch").val();
+        var sortBy = $("#admin-add-skill-sortby").val();
         $.ajax({
             url: '/Skills/GetSkillList',
             type: 'GET',
+            data: {searchText,sortBy,pageNumber},
             dataType: 'Html',
             success: function (data) {
                 $('.skilldatalist').html("");

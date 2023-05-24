@@ -22,17 +22,21 @@ namespace Service_Demo.Services.Service
             _skillRepository = skillRepository;
             _mapper = mapper;
         }
-        public SkillsViewModel GetSkills(string searchText, int pageNumber)
+        public SkillsViewModel GetSkills(string searchText, int pageNumber, string sortBy)
         {
             if (pageNumber == 0)
             {
                 pageNumber = 1;
             }
-            int pagesize = 3;
+            int pagesize = 5;
             var skills = _skillRepository.QueryableData(skill => skill.DeletedAt == null).OrderBy(skill => skill.SkillName); 
             if (searchText != null)
             {
                 skills = _skillRepository.QueryableData(skill => skill.SkillName.ToLower().Contains(searchText.ToLower()) && skill.DeletedAt == null).OrderBy(skill => skill.SkillName);
+            }
+            if(sortBy == "Status")
+            {
+                skills = skills.OrderByDescending(skill => skill.Status);
             }
             int pagecount = (int)Math.Ceiling((double)skills.Count() / pagesize);
             var skills1 = skills.Skip((pageNumber - 1) * pagesize).Take(pagesize);
@@ -52,10 +56,6 @@ namespace Service_Demo.Services.Service
             _skillRepository.Edit(skill);
             _skillRepository.Save();
         }
-        public bool FindSkillName(SkillsViewModel model)
-        {
-            return _skillRepository.AnyData(skill => skill.SkillName == model.SkillName);
-        }
         public void AddEditSkill(SkillsViewModel model)
         {
             var config = new MapperConfiguration(x => x.CreateMap<SkillsViewModel, Skills>());
@@ -71,6 +71,7 @@ namespace Service_Demo.Services.Service
             {
                 var skill = _skillRepository.GetFirstOrDefaultData(skill => skill.Id == model.SkillId);
                 Skills updatedSkillMapper = mapper.Map(model, skill);
+                updatedSkillMapper.UpdatedAt = DateTime.Now;
                 _skillRepository.Edit(updatedSkillMapper);
             }
             _skillRepository.Save();

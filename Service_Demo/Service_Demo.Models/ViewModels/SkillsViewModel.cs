@@ -10,7 +10,7 @@ namespace Service_Demo.Models.ViewModels
     public class SkillsViewModel
     {
         public List<Skills> Skills { get; set; }
-        [Required]
+        [Required (ErrorMessage = "Skill Name Required")]
         public string SkillName { get; set; }
         [Required]
         public bool? Status { get; set; }

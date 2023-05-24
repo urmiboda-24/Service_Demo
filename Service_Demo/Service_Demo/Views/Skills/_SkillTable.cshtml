@@ -90,66 +90,80 @@ else{
         var currentPage = @Model.CurrentPage;
         var pageCount = @Model.PageCount;
         $(".page-btn").click(function () {
-            var page = $(this).text();
-            var text = $("#skillsearch").val();
-            if (page != currentPage) {
-                $.ajax({
-                    type: 'GET',
-                    url: '/Skills/GetSkillList',
-                    dataType: 'html',
-                    data: {searchText:text,pageNumber:page},
-                    success: function (data) {
-                        $('.skilldatalist').html("");
-                        $('.skilldatalist').html(data);
-                    },
-                    error: function (xhr, status, error) {
-                        console.log(error);
-                    }
-                });
+            var pageNumber = $(this).text();
+            if (pageNumber != currentPage) {
+                GetAdminSkills(pageNumber);
+                //$.ajax({
+                //    type: 'GET',
+                //    url: '/Skills/GetSkillList',
+                //    dataType: 'html',
+                //    data: {searchText:text,pageNumber:page},
+                //    success: function (data) {
+                //        $('.skilldatalist').html("");
+                //        $('.skilldatalist').html(data);
+                //    },
+                //    error: function (xhr, status, error) {
+                //        console.log(error);
+                //    }
+                //});
             }
         });
 
         $("#prev-btn").click(function () {
-            var prevPage = currentPage - 1;
-            var text = $("#skillsearch").val();
-            if (prevPage >= 1) {
-                $.ajax({
-                    type: 'GET',
-                    url: '/Skills/GetSkillList',
-                    dataType: 'html',
-                    data: {searchText:text,pageNumber:prevPage},
-                    success: function (data) {
-                        $('.skilldatalist').html("");
-                        $('.skilldatalist').html(data);
-                    },
-                    error: function (xhr, status, error) {
-                        console.log(error);
-                    }
-                });
+            var pageNumber = currentPage - 1;
+            if (pageNumber >= 1) {
+                 GetAdminSkills(pageNumber);
+                //$.ajax({
+                //    type: 'GET',
+                //    url: '/Skills/GetSkillList',
+                //    dataType: 'html',
+                //    data: {searchText:text,pageNumber:prevPage},
+                //    success: function (data) {
+                //        $('.skilldatalist').html("");
+                //        $('.skilldatalist').html(data);
+                //    },
+                //    error: function (xhr, status, error) {
+                //        console.log(error);
+                //    }
+                //});
             }
         });
 
         $("#next-btn").click(function () {
-            var nextPage = currentPage + 1;
-            var text = $("#skillsearch").val();
-            if (nextPage <= pageCount) {
-                $.ajax({
-                    type: 'GET',
-                    url: '/Skills/GetSkillList',
-                    dataType: 'html',
-                    data: {searchText:text,pageNumber:nextPage},
-                    success: function (data) {
-                        $('.skilldatalist').html("");
-                        $('.skilldatalist').html(data);
-                    },
-                    error: function (xhr, status, error) {
-                        console.log(error);
-                    }
-                });
+            var pageNumber = currentPage + 1;
+            if (pageNumber <= pageCount) {
+                 GetAdminSkills(pageNumber);
+                //$.ajax({
+                //    type: 'GET',
+                //    url: '/Skills/GetSkillList',
+                //    dataType: 'html',
+                //    data: {searchText:text,pageNumber:nextPage},
+                //    success: function (data) {
+                //        $('.skilldatalist').html("");
+                //        $('.skilldatalist').html(data);
+                //    },
+                //    error: function (xhr, status, error) {
+                //        console.log(error);
+                //    }
+                //});
             }
         });
 
     });
 
-
+function GetSkill(text,page){
+    $.ajax({
+        type: 'GET',
+        url: '/Skills/GetSkillList',
+        dataType: 'html',
+        data: {searchText:text,pageNumber:page},
+        success: function (data) {
+            $('.skilldatalist').html("");
+            $('.skilldatalist').html(data);
+        },
+        error: function (xhr, status, error) {
+            console.log(error);
+        }
+    });
+}
 </script>

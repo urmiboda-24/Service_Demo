@@ -22,7 +22,7 @@ namespace Service_Demo.Controllers
         [HttpPost]
         public IActionResult SkillList(SkillsViewModel model)
         {
-            bool skillAvailable = _skillService.FindSkillName(model);
+            bool skillAvailable = _skillService.AnyData(skill => skill.SkillName == model.SkillName);
             if(skillAvailable == true && model.SkillId == 0)
             {
                 _toastNotification.Error("Skill already exit", 5);
@@ -41,9 +41,9 @@ namespace Service_Demo.Controllers
             }
             return View();
         }
-        public IActionResult GetSkillList(string searchText, int pageNumber)
+        public IActionResult GetSkillList(string searchText, int pageNumber, string sortBy)
         {
-            var skills = _skillService.GetSkills(searchText, pageNumber);
+            var skills = _skillService.GetSkills(searchText, pageNumber, sortBy);
             return PartialView("_SkillTable", skills);
         }
         public IActionResult RemoveSkill(long skillId)

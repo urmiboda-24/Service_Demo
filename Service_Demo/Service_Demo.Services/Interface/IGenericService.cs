@@ -13,5 +13,6 @@ namespace Service_Demo.Services.Interface
        public void Save();
        public void Remove(T entity);
        public T GetFirstOrDefaultData(Expression<Func<T, bool>> condition);
+        public bool AnyData(Expression<Func<T, bool>> condition);
     }
 }

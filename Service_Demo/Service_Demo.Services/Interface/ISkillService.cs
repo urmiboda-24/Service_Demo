@@ -11,10 +11,8 @@ namespace Service_Demo.Services.Interface
     public interface ISkillService : IGenericService<Skills>
 
     {
-        public SkillsViewModel GetSkills(string searchText, int pageNumber);
-      /*  public void AddSkill(Skills model);*/
+        public SkillsViewModel GetSkills(string searchText, int pageNumber,string sortBy);
         public void RemoveSkill(long skillId);
         public void AddEditSkill(SkillsViewModel model);
-        public bool FindSkillName(SkillsViewModel model);
     }
 }
