@@ -1,4 +1,5 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service_Demo.Entites.Models;
 using Service_Demo.Models.ViewModels;
@@ -6,6 +7,7 @@ using Service_Demo.Services.Interface;
 
 namespace Service_Demo.Controllers
 {
+    [Authorize(Roles = "User,Admin")]
     public class SkillsController : Controller
     {
         private readonly ISkillService _skillService;
@@ -43,6 +45,7 @@ namespace Service_Demo.Controllers
         }
         public IActionResult GetSkillList(string searchText, int pageNumber, string sortBy)
         {
+           
             var skills = _skillService.GetSkills(searchText, pageNumber, sortBy);
             return PartialView("_SkillTable", skills);
         }

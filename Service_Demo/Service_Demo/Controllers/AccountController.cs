@@ -35,7 +35,8 @@ namespace Service_Demo.Controllers
             {
                     var userdValid = _accountService.UserAvailable(model);
                     {
-                        if (userdValid != null)
+                        
+                    if (userdValid != null)
                         {
                             var user = _genericService.GetFirstOrDefaultData(user => user.Email == model.Email);
                             var config = new MapperConfiguration(x => x.CreateMap<User, SessionDetailsViewModel>().ForMember(dest => dest.FullName, opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName}")));
@@ -49,9 +50,8 @@ namespace Service_Demo.Controllers
 
                             if (string.IsNullOrWhiteSpace(token))
                             {
-                                _toastNotification.Error("User not exits", 5);
+                                _toastNotification.Error("User not exit", 5);
                             }
-                            HttpContext.Session.SetString("UserID", (userdValid.Id).ToString());
                             HttpContext.Session.SetString("Email", userdValid.Email);
                             HttpContext.Session.SetString("Token", token);
                             HttpContext.Session.SetString("Avatar", userdValid.Avatar);
@@ -73,7 +73,7 @@ namespace Service_Demo.Controllers
                         else
                         {
 
-                            _toastNotification.Error("Wrong password", 5);
+                            _toastNotification.Error("User not exit", 5);
                         }
                     }
             }
