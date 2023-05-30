@@ -37,7 +37,7 @@ namespace Service_Demo.Services.Service
             }
             else
             {
-                skills = skills.OrderBy(skill => skill.CreatedAt);
+                skills = skills.OrderByDescending(skill => skill.CreatedAt);
             }
             var result = _skillRepository.GetPageListData(
                     skills.Select(skill => new SkillsViewModel

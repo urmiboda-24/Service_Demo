@@ -13,7 +13,7 @@ namespace Service_Demo.Models.ViewModels
         [Required (ErrorMessage = "Skill Name Required")]
         public string SkillName { get; set; }
         [Required]
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
         public long Id { get; set; }
        /* public int PageCount { get; set; }
         public int PageSize { get; set; }
