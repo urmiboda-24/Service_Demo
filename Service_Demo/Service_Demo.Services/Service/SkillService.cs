@@ -23,17 +23,21 @@ namespace Service_Demo.Services.Service
             _mapper = mapper;
         }
 
-        public PaginationDataViewModel<SkillsViewModel> GetSkills(string searchText, int pageNumber, string sortBy)
+        public PaginationDataViewModel<SkillsViewModel> GetSkills(string searchText, int pageNumber, string sortBy, int pageSize)
         {
-
-            var skills = _skillRepository.QueryableData(skill => skill.DeletedAt == null).OrderBy(skill => skill.SkillName);
-            if (searchText != null)
-            {
-                skills = _skillRepository.QueryableData(skill => skill.SkillName.ToLower().Contains(searchText.ToLower()) && skill.DeletedAt == null).OrderBy(skill => skill.SkillName);
-            }
+            var skills = (searchText != null) ? _skillRepository.QueryableData(skill => skill.SkillName.ToLower().Contains(searchText.ToLower()) && skill.DeletedAt == null) :
+                         _skillRepository.QueryableData(skill => skill.DeletedAt == null);
             if (sortBy == "Status")
             {
                 skills = skills.OrderByDescending(skill => skill.Status);
+            }
+            else if(sortBy == "SkillName")
+            {
+                skills = skills.OrderBy(skill => skill.SkillName);
+            }
+            else
+            {
+                skills = skills.OrderBy(skill => skill.CreatedAt);
             }
             var result = _skillRepository.GetPageListData(
                     skills.Select(skill => new SkillsViewModel
@@ -42,30 +46,11 @@ namespace Service_Demo.Services.Service
                         Status = skill.Status,
                         Id = skill.Id
                     }),
-                    pageNumber
+                    pageNumber,
+                    pageSize
                );
             return result;
         }
 
-        //public void AddEditSkill(SkillsViewModel model)
-        //{
-        //    var config = new MapperConfiguration(x => x.CreateMap<SkillsViewModel, Skills>());
-        //    var mapper = new Mapper(config);
-
-
-        //    if (model.SkillId == 0)
-        //    {
-        //        var addSkillMapper = mapper.Map<SkillsViewModel, Skills>(model);
-        //        _skillRepository.Add(addSkillMapper);
-        //    }
-        //    else
-        //    {
-        //        var skill = _skillRepository.GetFirstOrDefaultData(skill => skill.Id == model.SkillId);
-        //        Skills updatedSkillMapper = mapper.Map(model, skill);
-        //        updatedSkillMapper.UpdatedAt = DateTime.Now;
-        //        _skillRepository.Edit(updatedSkillMapper);
-        //    }
-        //    _skillRepository.Save();
-        //}
     }
 }

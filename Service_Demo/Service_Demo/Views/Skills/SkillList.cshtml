@@ -5,7 +5,8 @@
 @{
     var role = @Accesor?.HttpContext?.Session.GetString("Role");
 }
-<header>
+<partial name="_Navbar" />
+@*<header>
     <nav class="admin-navbar">
         <div class="admin-nav-left">
             <i id="sidebar-open" class="bi bi-list"></i>
@@ -24,27 +25,6 @@
                     </ul>
                 </li>
             </ul>
-        </div>
-    </nav>
-</header>
-@*<header>
-    <nav class="admin-navbar">
-        <div class="admin-nav-left">
-            <i id="sidebar-open" class="bi bi-list"></i>
-            <span>@DateTime.Now.ToString("dddd, MMMM dd, yyyy, h:mm tt")</span>
-        </div>
-        <div class="admin-nav-right">
-            <img src="@Accesor?.HttpContext?.Session.GetString("Avatar")" alt="" />
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                      @Accesor?.HttpContext?.Session.GetString("Name")
-                </li>
-            </ul>
-             <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Edit Profile</a></li>
-                        <li><a class="dropdown-item"  href="@Url.Action("MissionListing", "Mission")">Platform Landing</a></li>
-                        <li><a class="dropdown-item" href="@Url.Action("logOut", "Account")">Logout</a></li>
-                 </ul>
         </div>
     </nav>
 </header>*@
@@ -159,9 +139,17 @@
         </div>
         <div class="search">
                 <select class="form-select" aria-label="Default select example" id="admin-add-skill-sortby" style="border:none;">
-                    <option value="True">Sort By</option>
+                    <option value="True" selected>Sort By</option>
                     <option value="SkillName">Alphabetic</option>
                     <option value="Status">Status</option>
+                </select>
+        </div>
+         <div class="search">
+                <select class="form-select" aria-label="Default select example" id="skill-page-size" style="border:none;">
+                    <option value="True" selected>Page Size</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
                 </select>
         </div>
         @if(@role == "Admin")
@@ -180,8 +168,14 @@
         GetAdminSkills(localStorage.getItem("currentPageNumber"));
         var searchValue = localStorage.getItem("preserveSearchValue");
         $('#skillsearch').val(searchValue);
+
         var sortValue = localStorage.getItem("preserveSortByValue");
-            $('#admin-add-skill-sortby').val(sortValue);
+        sortValue = sortValue ? sortValue : "True";
+        $('#admin-add-skill-sortby').val(sortValue);
+        
+        var pageSize = localStorage.getItem("preservePageSize");
+        pageSize = pageSize ? pageSize : "True";
+        $('#skill-page-size').val(pageSize);
         
         if ($(window).width() < 960) {
             $("#sidebar-close").show();
@@ -207,13 +201,17 @@
             localStorage.setItem("preserveSortByValue",$(this).val());
             GetAdminSkills(localStorage.getItem("currentPageNumber"));
         });
+        //ajax call for sort skill 
+        $("#skill-page-size").on("change", function () {
+            localStorage.setItem("preservePageSize",$(this).val());
+            GetAdminSkills(localStorage.getItem("currentPageNumber"));
+        });
        
     });
     $('#logout').on('click',function(e){
          localStorage.clear();
     });
     function RemoveSkills(SkillId){
-        console.log(localStorage.getItem("currentPageNumber"));
        $.ajax({
             url: '/Skills/RemoveSkill',
             type: 'GET',
@@ -228,15 +226,18 @@
         });
     }
     function GetAdminSkills(pageNumber) {
+         var searchText = localStorage.getItem("preserveSearchValue");
+         var sortBy = localStorage.getItem("preserveSortByValue");
+         var pageSize = localStorage.getItem("preservePageSize");
+
          if (pageNumber === 'undefined' || pageNumber === "" || pageNumber === 0 || pageNumber === null) {
             pageNumber = localStorage.getItem("currentPageNumber");
          }
-        var searchText = localStorage.getItem("preserveSearchValue");
-        var sortBy = localStorage.getItem("preserveSortByValue");
+       
         $.ajax({
             url: '/Skills/GetSkillList',
             type: 'GET',
-            data: {searchText,sortBy,pageNumber},
+            data: {searchText,sortBy,pageNumber,pageSize},
             dataType: 'Html',
             success: function (data) {
                 if ($(data).find('tbody tr').length === 0)

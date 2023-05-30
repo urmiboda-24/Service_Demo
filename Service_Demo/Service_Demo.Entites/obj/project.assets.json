@@ -2018,11 +2018,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj",
+      "projectUniqueName": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj",
       "projectName": "Service_Demo.Entites",
-      "projectPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj",
+      "projectPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj",
       "packagesPath": "C:\\Users\\tatva\\.nuget\\packages\\",
-      "outputPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\obj\\",
+      "outputPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

@@ -42,13 +42,11 @@ namespace Service_Demo.Services.Service
         public void Edit(T entity)
         {
             _genericRepository.Edit(entity);
-            _genericRepository.Save();
         }
 
         public void Add(T entity)
         {
             _genericRepository.Add(entity);
-            _genericRepository.Save();
         }
     }
 

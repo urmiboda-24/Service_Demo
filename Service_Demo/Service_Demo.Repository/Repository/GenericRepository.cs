@@ -60,25 +60,24 @@ namespace Service_Demo.Repository.Repository
         public void Add(T entity)
         {
             _context.Set<T>().Add(entity);
+            Save();
         }
 
         public void Edit(T entity)
         {
             _context.Set<T>().Update(entity);
+            Save();
         }
 
         public void Remove(T entity)
         {
             _context.Set<T>().Remove(entity);
         }
-        public PaginationDataViewModel<T> GetPageListData<T>(IEnumerable<T> items, int pageNumber)
+        public PaginationDataViewModel<T> GetPageListData<T>(IEnumerable<T> items, int pageNumber, int pagesize)
         {
+            pagesize = (pagesize < 5) ? 5 : pagesize;
+            pageNumber = (pageNumber == 0) ? 1 : pageNumber;
 
-            if (pageNumber == 0)
-            {
-                pageNumber = 1;
-            }
-            int pagesize = 6;
             int pagecount = (int)Math.Ceiling((double)items.Count() / pagesize);
             var item1 = items.Skip((pageNumber - 1) * pagesize).Take(pagesize);
             var data = new PaginationDataViewModel<T>

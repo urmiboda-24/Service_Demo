@@ -27,7 +27,7 @@ namespace Service_Demo.Controllers
         [HttpPost]
         public IActionResult SkillList(SkillsViewModel model)
         {
-            bool skillAvailable = _skillService.AnyData(skill => skill.SkillName == model.SkillName);
+            bool skillAvailable = _skillService.AnyData(skill => skill.SkillName == model.SkillName.ToLower());
             if (skillAvailable == true && model.Id == 0)
             {
                 _toastNotification.Error("Skill already exit", 5);
@@ -55,10 +55,10 @@ namespace Service_Demo.Controllers
             return View();
         }
 
-        public IActionResult GetSkillList(string searchText, int pageNumber, string sortBy)
+        public IActionResult GetSkillList(string searchText, int pageNumber, string sortBy, int pageSize)
         {
            
-            var skills = _skillService.GetSkills(searchText, pageNumber, sortBy);
+            var skills = _skillService.GetSkills(searchText, pageNumber, sortBy, pageSize);
             return PartialView("_SkillTable", skills);
         }
         public IActionResult RemoveSkill(long skillId)

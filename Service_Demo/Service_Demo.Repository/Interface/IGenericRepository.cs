@@ -20,6 +20,6 @@ namespace Service_Demo.Repository.Interface
         public T GetFirstData();
         public T GetFirstOrDefaultData(Expression<Func<T, bool>> condition);
         IQueryable<T> QueryableData(Expression<Func<T, bool>> condition);
-        public PaginationDataViewModel<T> GetPageListData<T>(IEnumerable<T> items, int pageNumber);
+        public PaginationDataViewModel<T> GetPageListData<T>(IEnumerable<T> items, int pageNumber, int pageSize);
     }
 }
