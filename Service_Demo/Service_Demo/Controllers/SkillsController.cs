@@ -66,7 +66,6 @@ namespace Service_Demo.Controllers
             var skill = _skillService.GetFirstOrDefaultData(skill => skill.Id == skillId);
             skill.DeletedAt = DateTime.Now;
             _skillService.Edit(skill);
-            _skillService.Save();
             _toastNotification.Success("Skill delete successfully", 5);
             return Ok();
         }

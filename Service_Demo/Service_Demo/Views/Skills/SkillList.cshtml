@@ -205,7 +205,7 @@
         //ajax call for sort skill 
         $("#admin-add-skill-sortby").on("change", function () {
             localStorage.setItem("preserveSortByValue",$(this).val());
-            GetAdminSkills();
+            GetAdminSkills(localStorage.getItem("currentPageNumber"));
         });
        
     });
@@ -239,20 +239,28 @@
             data: {searchText,sortBy,pageNumber},
             dataType: 'Html',
             success: function (data) {
-                if ($(data).find('tbody tr').length === 0) {
-                    if (pageNumber > 1) {
+                if ($(data).find('tbody tr').length === 0)
+                {
+                    if (pageNumber > 1) 
+                    {
                         localStorage.setItem("currentPageNumber", pageNumber - 1);
                         GetAdminSkills(localStorage.getItem("currentPageNumber"));
-                        }
                     }
-                    else {
+                    else
+                    {
+                          $('.skilldatalist').html("");
+                          $('.skilldatalist').html(data);
+                    }
+                }
+                else 
+                {
                     $('.skilldatalist').html("");
                     $('.skilldatalist').html(data);
                     localStorage.setItem("currentPageNumber", pageNumber);
-                    }
+                }
             },
             error: function () {
-                alert('error in fav mission');
+                alert('error in skill list');
             },
         });
     }
