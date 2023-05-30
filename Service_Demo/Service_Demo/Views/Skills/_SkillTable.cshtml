@@ -1,7 +1,7 @@
-﻿@model Service_Demo.Models.ViewModels.SkillsViewModel
+﻿@model Service_Demo.Models.ViewModels.PaginationDataViewModel<Service_Demo.Models.ViewModels.SkillsViewModel>
 @inject IHttpContextAccessor Accesor
 
-@if(@Model.Skills.Count == 0){
+@if(@Model.Items.Count == 0){
     <span><h3 class="text-danger text-center mt-5">Record Not Found</h3></span>
 }
 else{
@@ -22,9 +22,7 @@ else{
     </thead>
     <tbody>
             
-        @foreach (var item in Model.Skills)
-        {
-            @if (@item.DeletedAt == null)
+        @foreach (var item in Model.Items)
             {
                 <tr>
                     <td>
@@ -46,7 +44,7 @@ else{
                     </td>
                     }
                 </tr>
-            }
+            
         }
     </tbody>
 </table>
@@ -86,84 +84,47 @@ else{
 <script>
 
 
-        $(function () {
-        var currentPage = @Model.CurrentPage;
-        var pageCount = @Model.PageCount;
-        $(".page-btn").click(function () {
-            var pageNumber = $(this).text();
-            if (pageNumber != currentPage) {
-                GetAdminSkills(pageNumber);
-                //$.ajax({
-                //    type: 'GET',
-                //    url: '/Skills/GetSkillList',
-                //    dataType: 'html',
-                //    data: {searchText:text,pageNumber:page},
-                //    success: function (data) {
-                //        $('.skilldatalist').html("");
-                //        $('.skilldatalist').html(data);
-                //    },
-                //    error: function (xhr, status, error) {
-                //        console.log(error);
-                //    }
-                //});
-            }
-        });
-
-        $("#prev-btn").click(function () {
-            var pageNumber = currentPage - 1;
-            if (pageNumber >= 1) {
-                 GetAdminSkills(pageNumber);
-                //$.ajax({
-                //    type: 'GET',
-                //    url: '/Skills/GetSkillList',
-                //    dataType: 'html',
-                //    data: {searchText:text,pageNumber:prevPage},
-                //    success: function (data) {
-                //        $('.skilldatalist').html("");
-                //        $('.skilldatalist').html(data);
-                //    },
-                //    error: function (xhr, status, error) {
-                //        console.log(error);
-                //    }
-                //});
-            }
-        });
-
-        $("#next-btn").click(function () {
-            var pageNumber = currentPage + 1;
-            if (pageNumber <= pageCount) {
-                 GetAdminSkills(pageNumber);
-                //$.ajax({
-                //    type: 'GET',
-                //    url: '/Skills/GetSkillList',
-                //    dataType: 'html',
-                //    data: {searchText:text,pageNumber:nextPage},
-                //    success: function (data) {
-                //        $('.skilldatalist').html("");
-                //        $('.skilldatalist').html(data);
-                //    },
-                //    error: function (xhr, status, error) {
-                //        console.log(error);
-                //    }
-                //});
-            }
-        });
-
-    });
-
-function GetSkill(text,page){
-    $.ajax({
-        type: 'GET',
-        url: '/Skills/GetSkillList',
-        dataType: 'html',
-        data: {searchText:text,pageNumber:page},
-        success: function (data) {
-            $('.skilldatalist').html("");
-            $('.skilldatalist').html(data);
-        },
-        error: function (xhr, status, error) {
-            console.log(error);
+$(function () {
+    var currentPage = @Model.CurrentPage;
+    var pageCount = @Model.PageCount;
+    localStorage.setItem("currentPageNumber",currentPage);
+    $(".page-btn").click(function () {
+        debugger;
+        var pageNumber = $(this).text();
+        if (pageNumber != currentPage) {
+            GetAdminSkills(pageNumber);
         }
     });
-}
+
+    $("#prev-btn").click(function () {
+        var pageNumber = currentPage - 1;
+        if (pageNumber >= 1) {
+                GetAdminSkills(pageNumber);
+        }
+    });
+
+    $("#next-btn").click(function () {
+        var pageNumber = currentPage + 1;
+        if (pageNumber <= pageCount) {
+                GetAdminSkills(pageNumber);
+        }
+    });
+
+});
+
+//function GetSkill(text,page){
+//    $.ajax({
+//        type: 'GET',
+//        url: '/Skills/GetSkillList',
+//        dataType: 'html',
+//        data: {searchText:text,pageNumber:page},
+//        success: function (data) {
+//            $('.skilldatalist').html("");
+//            $('.skilldatalist').html(data);
+//        },
+//        error: function (xhr, status, error) {
+//            console.log(error);
+//        }
+//    });
+//}
 </script>

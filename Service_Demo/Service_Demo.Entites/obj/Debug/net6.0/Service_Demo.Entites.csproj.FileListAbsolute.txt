@@ -11,3 +11,17 @@ D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Entites\obj\Deb
 D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Entites\obj\Debug\net6.0\ref\Service_Demo.Entites.dll
 D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Entites\obj\Debug\net6.0\Service_Demo.Entites.pdb
 D:\urmi_training_jan-2023\Service_Demo\Service_Demo\Service_Demo.Entites\obj\Debug\net6.0\Service_Demo.Entites.genruntimeconfig.cache
+D:\Backup\Service_Demo\Service_Demo\Service_Demo.Entites\bin\Debug\net6.0\Service_Demo.Entites.deps.json
+D:\Backup\Service_Demo\Service_Demo\Service_Demo.Entites\bin\Debug\net6.0\Service_Demo.Entites.runtimeconfig.json
+D:\Backup\Service_Demo\Service_Demo\Service_Demo.Entites\bin\Debug\net6.0\Service_Demo.Entites.dll
+D:\Backup\Service_Demo\Service_Demo\Service_Demo.Entites\bin\Debug\net6.0\ref\Service_Demo.Entites.dll
+D:\Backup\Service_Demo\Service_Demo\Service_Demo.Entites\bin\Debug\net6.0\Service_Demo.Entites.pdb
+D:\Backup\Service_Demo\Service_Demo\Service_Demo.Entites\obj\Debug\net6.0\Service_Demo.Entites.csproj.AssemblyReference.cache
+D:\Backup\Service_Demo\Service_Demo\Service_Demo.Entites\obj\Debug\net6.0\Service_Demo.Entites.GeneratedMSBuildEditorConfig.editorconfig
+D:\Backup\Service_Demo\Service_Demo\Service_Demo.Entites\obj\Debug\net6.0\Service_Demo.Entites.AssemblyInfoInputs.cache
+D:\Backup\Service_Demo\Service_Demo\Service_Demo.Entites\obj\Debug\net6.0\Service_Demo.Entites.AssemblyInfo.cs
+D:\Backup\Service_Demo\Service_Demo\Service_Demo.Entites\obj\Debug\net6.0\Service_Demo.Entites.csproj.CoreCompileInputs.cache
+D:\Backup\Service_Demo\Service_Demo\Service_Demo.Entites\obj\Debug\net6.0\Service_Demo.Entites.dll
+D:\Backup\Service_Demo\Service_Demo\Service_Demo.Entites\obj\Debug\net6.0\ref\Service_Demo.Entites.dll
+D:\Backup\Service_Demo\Service_Demo\Service_Demo.Entites\obj\Debug\net6.0\Service_Demo.Entites.pdb
+D:\Backup\Service_Demo\Service_Demo\Service_Demo.Entites\obj\Debug\net6.0\Service_Demo.Entites.genruntimeconfig.cache

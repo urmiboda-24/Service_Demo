@@ -38,7 +38,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidIssuer = builder.Configuration["JwtSetting:Issuer"],
         ValidAudience = builder.Configuration["JwtSetting:Audience"],
         IssuerSigningKey = new SymmetricSecurityKey
-    (Encoding.UTF8.GetBytes(builder.Configuration["JwtSetting:Key"])),
+        (Encoding.UTF8.GetBytes(builder.Configuration["JwtSetting:Key"])),
         ValidateIssuer = true,
         ValidateAudience = true,
         ValidateLifetime = true,
@@ -72,6 +72,9 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseSession();
+
+
+
 app.Use(async (context, next) =>
 {
     var token = context.Session.GetString("Token");
@@ -89,7 +92,34 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+// Register the session expiration event handler
+/*app.Use(async (context, next) =>
+{
+    var session = context.Session;
+    if (session != null && session.IsAvailable)
+    {
+        var lastActivityTime = session.GetString("LastActivityTime");
+        var idleTimeout = TimeSpan.FromSeconds(5);
 
+        if (!string.IsNullOrEmpty(lastActivityTime) && DateTime.TryParse(lastActivityTime, out var lastActivity))
+        {
+            var currentTime = DateTime.UtcNow;
+            var timeSinceLastActivity = currentTime - lastActivity;
+
+            if (timeSinceLastActivity > idleTimeout)
+            {
+                // Session expired, perform necessary actions (e.g., log out the user, redirect, etc.)
+                // You can also clear the session if needed: session.Clear();
+                context.Response.Redirect("Login");
+            }
+        }
+
+        // Update the last activity time
+        session.SetString("LastActivityTime", DateTime.UtcNow.ToString());
+    }
+
+    await next();
+});*/
 app.UseNotyf();
 
 app.MapControllerRoute(

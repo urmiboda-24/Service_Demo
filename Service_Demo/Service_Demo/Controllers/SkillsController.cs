@@ -1,4 +1,5 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service_Demo.Entites.Models;
@@ -12,10 +13,12 @@ namespace Service_Demo.Controllers
     {
         private readonly ISkillService _skillService;
         private readonly INotyfService _toastNotification;
-        public SkillsController(ISkillService skillService, INotyfService toastNotification)
+        private readonly IMapper _mapper;
+        public SkillsController(ISkillService skillService, INotyfService toastNotification, IMapper mapper)
         {
             _skillService = skillService;
             _toastNotification = toastNotification;
+            _mapper = mapper;
         }
         public IActionResult SkillList()
         {
@@ -25,24 +28,33 @@ namespace Service_Demo.Controllers
         public IActionResult SkillList(SkillsViewModel model)
         {
             bool skillAvailable = _skillService.AnyData(skill => skill.SkillName == model.SkillName);
-            if(skillAvailable == true && model.SkillId == 0)
+            if (skillAvailable == true && model.Id == 0)
             {
                 _toastNotification.Error("Skill already exit", 5);
             }
             else
             {
-                _skillService.AddEditSkill(model);
-                if (model.SkillId == 0)
+                var config = new MapperConfiguration(x => x.CreateMap<SkillsViewModel, Skills>());
+                var mapper = new Mapper(config);
+                if (model.Id == 0)
                 {
+                    
+                    var addSkillMapper = mapper.Map<SkillsViewModel, Skills>(model);
+                    _skillService.Add(addSkillMapper);
                     _toastNotification.Success("Skill add successfully", 5);
                 }
                 else
                 {
+                    var skill = _skillService.GetFirstOrDefaultData(skill => skill.Id == model.Id);
+                    var updatedSkillMapper = mapper.Map(model, skill);
+                    updatedSkillMapper.UpdatedAt = DateTime.Now;
+                    _skillService.Edit(updatedSkillMapper);
                     _toastNotification.Success("Skill edit successfully", 5);
                 }
             }
             return View();
         }
+
         public IActionResult GetSkillList(string searchText, int pageNumber, string sortBy)
         {
            
@@ -51,7 +63,10 @@ namespace Service_Demo.Controllers
         }
         public IActionResult RemoveSkill(long skillId)
         {
-            _skillService.RemoveSkill(skillId);
+            var skill = _skillService.GetFirstOrDefaultData(skill => skill.Id == skillId);
+            skill.DeletedAt = DateTime.Now;
+            _skillService.Edit(skill);
+            _skillService.Save();
             _toastNotification.Success("Skill delete successfully", 5);
             return Ok();
         }

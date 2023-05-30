@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo\\Service_Demo.csproj": {}
+    "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo\\Service_Demo.csproj": {}
   },
   "projects": {
-    "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj": {
+    "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj",
+        "projectUniqueName": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj",
         "projectName": "Service_Demo.Entites",
-        "projectPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj",
+        "projectPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj",
         "packagesPath": "C:\\Users\\tatva\\.nuget\\packages\\",
-        "outputPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\obj\\",
+        "outputPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -97,14 +97,14 @@
         }
       }
     },
-    "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj": {
+    "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj",
+        "projectUniqueName": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj",
         "projectName": "Service_Demo.Models",
-        "projectPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj",
+        "projectPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj",
         "packagesPath": "C:\\Users\\tatva\\.nuget\\packages\\",
-        "outputPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Models\\obj\\",
+        "outputPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -126,8 +126,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj": {
-                "projectPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj"
+              "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj": {
+                "projectPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj"
               }
             }
           }
@@ -194,14 +194,14 @@
         }
       }
     },
-    "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Repository\\Service_Demo.Repository.csproj": {
+    "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Repository\\Service_Demo.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Repository\\Service_Demo.Repository.csproj",
+        "projectUniqueName": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Repository\\Service_Demo.Repository.csproj",
         "projectName": "Service_Demo.Repository",
-        "projectPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Repository\\Service_Demo.Repository.csproj",
+        "projectPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Repository\\Service_Demo.Repository.csproj",
         "packagesPath": "C:\\Users\\tatva\\.nuget\\packages\\",
-        "outputPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Repository\\obj\\",
+        "outputPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -223,11 +223,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj": {
-                "projectPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj"
+              "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj": {
+                "projectPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj"
               },
-              "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj": {
-                "projectPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj"
+              "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj": {
+                "projectPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj"
               }
             }
           }
@@ -294,14 +294,14 @@
         }
       }
     },
-    "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Services\\Service_Demo.Services.csproj": {
+    "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Services\\Service_Demo.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Services\\Service_Demo.Services.csproj",
+        "projectUniqueName": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Services\\Service_Demo.Services.csproj",
         "projectName": "Service_Demo.Services",
-        "projectPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Services\\Service_Demo.Services.csproj",
+        "projectPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Services\\Service_Demo.Services.csproj",
         "packagesPath": "C:\\Users\\tatva\\.nuget\\packages\\",
-        "outputPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Services\\obj\\",
+        "outputPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -323,14 +323,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj": {
-                "projectPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj"
+              "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj": {
+                "projectPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj"
               },
-              "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj": {
-                "projectPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj"
+              "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj": {
+                "projectPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj"
               },
-              "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Repository\\Service_Demo.Repository.csproj": {
-                "projectPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Repository\\Service_Demo.Repository.csproj"
+              "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Repository\\Service_Demo.Repository.csproj": {
+                "projectPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Repository\\Service_Demo.Repository.csproj"
               }
             }
           }
@@ -397,14 +397,14 @@
         }
       }
     },
-    "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo\\Service_Demo.csproj": {
+    "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo\\Service_Demo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo\\Service_Demo.csproj",
+        "projectUniqueName": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo\\Service_Demo.csproj",
         "projectName": "Service_Demo",
-        "projectPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo\\Service_Demo.csproj",
+        "projectPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo\\Service_Demo.csproj",
         "packagesPath": "C:\\Users\\tatva\\.nuget\\packages\\",
-        "outputPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo\\obj\\",
+        "outputPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -426,14 +426,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj": {
-                "projectPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj"
+              "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj": {
+                "projectPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj"
               },
-              "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj": {
-                "projectPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj"
+              "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj": {
+                "projectPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj"
               },
-              "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Services\\Service_Demo.Services.csproj": {
-                "projectPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Services\\Service_Demo.Services.csproj"
+              "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Services\\Service_Demo.Services.csproj": {
+                "projectPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Services\\Service_Demo.Services.csproj"
               }
             }
           }

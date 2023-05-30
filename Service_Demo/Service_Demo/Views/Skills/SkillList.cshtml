@@ -1,5 +1,5 @@
 ﻿@*<partial name="AdminSlidebar" />*@
-@model Service_Demo.Models.ViewModels.SkillsViewModel
+@model Service_Demo.Entites.Models.Skills
 @inject IHttpContextAccessor Accesor
 <!-- Navbar -->
 @{
@@ -20,7 +20,7 @@
                         @Accesor?.HttpContext?.Session.GetString("Name")
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="@Url.Action("Logout", "Account")">Logout</a></li>
+                        <li><a id="logout" class="dropdown-item" href="@Url.Action("Logout", "Account")">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -110,7 +110,7 @@
                         </div>
                         <form asp-action="SkillList" method="post" asp-controller="Skills">
                         <div class="modal-body">
-                            <input type="hidden" asp-for="SkillId" id="admin-skill-id" />
+                            <input type="hidden" asp-for="Id" id="admin-skill-id" />
                             <p class="mb-1">Skill Name</p>
                             <input asp-for="SkillName" class="brd1" id="admin-add-skill" type="text">
                             <span asp-validation-for="SkillName" class="text-danger"></span>
@@ -177,7 +177,12 @@
 
 <script>
     $(document).ready(function () {
-        GetAdminSkills();
+        GetAdminSkills(localStorage.getItem("currentPageNumber"));
+        var searchValue = localStorage.getItem("preserveSearchValue");
+        $('#skillsearch').val(searchValue);
+        var sortValue = localStorage.getItem("preserveSortByValue");
+            $('#admin-add-skill-sortby').val(sortValue);
+        
         if ($(window).width() < 960) {
             $("#sidebar-close").show();
         } 
@@ -193,23 +198,29 @@
 
         //ajax call for skill search 
         $("#skillsearch").on("keyup", function () {
+            localStorage.setItem("preserveSearchValue",$(this).val());
             GetAdminSkills();
         });
 
         //ajax call for sort skill 
         $("#admin-add-skill-sortby").on("change", function () {
+            localStorage.setItem("preserveSortByValue",$(this).val());
             GetAdminSkills();
         });
        
     });
+    $('#logout').on('click',function(e){
+         localStorage.clear();
+    });
     function RemoveSkills(SkillId){
+        console.log(localStorage.getItem("currentPageNumber"));
        $.ajax({
             url: '/Skills/RemoveSkill',
             type: 'GET',
             data:{skillId:SkillId},
             success: function () {
                 $('#popupadminremoveskill').modal('hide');
-                 GetAdminSkills();
+                 GetAdminSkills(localStorage.getItem("currentPageNumber"));
             },
             error: function () {
                 alert('error in skill remove admin');
@@ -217,16 +228,28 @@
         });
     }
     function GetAdminSkills(pageNumber) {
-        var searchText = $("#skillsearch").val();
-        var sortBy = $("#admin-add-skill-sortby").val();
+         if (pageNumber === 'undefined' || pageNumber === "" || pageNumber === 0 || pageNumber === null) {
+            pageNumber = localStorage.getItem("currentPageNumber");
+         }
+        var searchText = localStorage.getItem("preserveSearchValue");
+        var sortBy = localStorage.getItem("preserveSortByValue");
         $.ajax({
             url: '/Skills/GetSkillList',
             type: 'GET',
             data: {searchText,sortBy,pageNumber},
             dataType: 'Html',
             success: function (data) {
-                $('.skilldatalist').html("");
-                $('.skilldatalist').html(data);
+                if ($(data).find('tbody tr').length === 0) {
+                    if (pageNumber > 1) {
+                        localStorage.setItem("currentPageNumber", pageNumber - 1);
+                        GetAdminSkills(localStorage.getItem("currentPageNumber"));
+                        }
+                    }
+                    else {
+                    $('.skilldatalist').html("");
+                    $('.skilldatalist').html(data);
+                    localStorage.setItem("currentPageNumber", pageNumber);
+                    }
             },
             error: function () {
                 alert('error in fav mission');

@@ -2065,11 +2065,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Repository\\Service_Demo.Repository.csproj",
+      "projectUniqueName": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Repository\\Service_Demo.Repository.csproj",
       "projectName": "Service_Demo.Repository",
-      "projectPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Repository\\Service_Demo.Repository.csproj",
+      "projectPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Repository\\Service_Demo.Repository.csproj",
       "packagesPath": "C:\\Users\\tatva\\.nuget\\packages\\",
-      "outputPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Repository\\obj\\",
+      "outputPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Repository\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -2091,11 +2091,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj": {
-              "projectPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj"
+            "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj": {
+              "projectPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Entites\\Service_Demo.Entites.csproj"
             },
-            "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj": {
-              "projectPath": "D:\\urmi_training_jan-2023\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj"
+            "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj": {
+              "projectPath": "D:\\Backup\\Service_Demo\\Service_Demo\\Service_Demo.Models\\Service_Demo.Models.csproj"
             }
           }
         }

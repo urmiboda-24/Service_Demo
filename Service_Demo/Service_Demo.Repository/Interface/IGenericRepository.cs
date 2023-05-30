@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Service_Demo.Models.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -19,5 +20,6 @@ namespace Service_Demo.Repository.Interface
         public T GetFirstData();
         public T GetFirstOrDefaultData(Expression<Func<T, bool>> condition);
         IQueryable<T> QueryableData(Expression<Func<T, bool>> condition);
+        public PaginationDataViewModel<T> GetPageListData<T>(IEnumerable<T> items, int pageNumber);
     }
 }

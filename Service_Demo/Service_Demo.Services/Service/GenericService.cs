@@ -1,4 +1,5 @@
-﻿using Service_Demo.Repository.Interface;
+﻿using Service_Demo.Models.ViewModels;
+using Service_Demo.Repository.Interface;
 using Service_Demo.Services.Interface;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,18 @@ namespace Service_Demo.Services.Service
         public bool AnyData(Expression<Func<T, bool>> condition)
         {
             return _genericRepository.AnyData(condition);
+        }
+
+        public void Edit(T entity)
+        {
+            _genericRepository.Edit(entity);
+            _genericRepository.Save();
+        }
+
+        public void Add(T entity)
+        {
+            _genericRepository.Add(entity);
+            _genericRepository.Save();
         }
     }
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Service_Demo.Entites.Data;
+using Service_Demo.Models.ViewModels;
 using Service_Demo.Repository.Interface;
 using System;
 using System.Collections.Generic;
@@ -69,6 +70,25 @@ namespace Service_Demo.Repository.Repository
         public void Remove(T entity)
         {
             _context.Set<T>().Remove(entity);
+        }
+        public PaginationDataViewModel<T> GetPageListData<T>(IEnumerable<T> items, int pageNumber)
+        {
+
+            if (pageNumber == 0)
+            {
+                pageNumber = 1;
+            }
+            int pagesize = 6;
+            int pagecount = (int)Math.Ceiling((double)items.Count() / pagesize);
+            var item1 = items.Skip((pageNumber - 1) * pagesize).Take(pagesize);
+            var data = new PaginationDataViewModel<T>
+            {
+                PageCount = pagecount,
+                PageSize = pagesize,
+                CurrentPage = pageNumber,
+                Items = item1.ToList()
+            };
+            return data;
         }
     }
 }

@@ -14,5 +14,7 @@ namespace Service_Demo.Services.Interface
        public void Remove(T entity);
        public T GetFirstOrDefaultData(Expression<Func<T, bool>> condition);
        public bool AnyData(Expression<Func<T, bool>> condition);
+       public void Edit(T entity);
+       public void Add(T entity);
     }
 }
